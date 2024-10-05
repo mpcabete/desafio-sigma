@@ -5,22 +5,22 @@ import ProdutosList from './components/produtosList';
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 
 function App() {
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
 
   return (
-  <React.Fragment>
-<ThemeProvider theme={darkTheme}>
-      <CssBaseline enableColorScheme/>
-    <div className="App">
-      <ResponsiveAppBar />
-      <ProdutosList />
-    </div>
-    </ThemeProvider>
-  </ React.Fragment >
+    <React.Fragment>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline enableColorScheme />
+        <div className="App">
+          <ResponsiveAppBar />
+          <ProdutosList />
+        </div>
+      </ThemeProvider>
+    </ React.Fragment >
   );
 }
 

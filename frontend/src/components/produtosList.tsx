@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import OutlinedCard from './ProdutoCard';
+import CreateProdutoForm from './CreateProdutoForm';
+
 interface iProduto {
   nome: string
   descricao: string
@@ -26,6 +28,7 @@ function ProdutosList() {
 
   return (
     <div>
+          <CreateProdutoForm updateProdutosList={updateProdutosList}/>
       {produtos ? produtos.map(x => <OutlinedCard updateProdutosList={updateProdutosList} key={x.id} nome={x.nome} descricao={x.descricao} id={x.id} />) : 'Loading...'}
     </div>
   )
