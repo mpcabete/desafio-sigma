@@ -35,3 +35,20 @@ def create_produto(db: Session, produto: schemas.ProdutoCreate):
     db.commit()
     db.refresh(db_item)
     return db_item
+
+
+def delete_produto(db: Session, produtoID: int):
+    #TODO add user_id as arg, and ownler_id = user_id
+    db_item = db.get(models.Produto,produtoID)
+    db.delete(db_item)
+    db.commit()
+    return db_item
+
+
+def update_produto(db: Session, produto: schemas.ProdutoCreate):
+    #TODO add user_id as arg, and ownler_id = user_id
+    db_item = models.Produto(**produto.dict()) #TODO corrigir deprecation
+    db.add(db_item)
+    db.commit()
+    db.refresh(db_item)
+    return db_item

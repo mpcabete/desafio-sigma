@@ -52,13 +52,19 @@ def get_db():
 #         raise HTTPException(status_code=404, detail="User not found")
 #     return db_user
 
-
-@app.post("/produtos/", response_model=schemas.Produto)
-def create_produto_for_user( produto: schemas.ProdutoCreate, db: Session = Depends(get_db)):
-    return crud.create_produto(db=db, produto=produto )
-
-
 @app.get("/produtos/", response_model=list[schemas.Produto])
 def read_produtos(db: Session = Depends(get_db)):
     produtos = crud.get_produtos(db)
     return produtos
+
+@app.post("/produtos/", response_model=schemas.Produto)
+def create_produto( produto: schemas.ProdutoCreate, db: Session = Depends(get_db)):
+    return crud.create_produto(db=db, produto=produto )
+
+@app.delete("/produtos/", response_model=schemas.Produto)
+def delete_produto( produtoID: int, db: Session = Depends(get_db)):
+    return crud.delete_produto(db=db, produtoID=produtoID )
+
+@app.put("/produtos/", response_model=schemas.Produto)
+def update_produto( produto: schemas.ProdutoCreate, db: Session = Depends(get_db)):
+    return crud.update_produto(db=db, produto=produto )

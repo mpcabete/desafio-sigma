@@ -1,32 +1,32 @@
 import { useEffect, useState } from 'react';
-import OutlinedCard from './OutlinedCard';
+import OutlinedCard from './ProdutoCard';
 interface iProduto {
-  nome:string
-  descricao:string
+  nome: string
+  descricao: string
+  id: number
 }
 
 function ProdutosList() {
 
-  const [produtos, setProdutos] = useState<iProduto[]|null>(null);
+  const [produtos, setProdutos] = useState<iProduto[] | null>(null);
+  async function updateProdutosList() {
+    const response = await fetch("http://127.0.0.1:8000/produtos/")
+    if (response.status === 200) {
+      const data = await response.json()
+      setProdutos(data)
+      console.log(data)
+    }
+
+  }
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("http://127.0.0.1:8000/produtos/")
-      if (response.status == 200) {
-        const data = await response.json()
-        setProdutos(data)
-        console.log(data)
-      }
-
-    }
-    fetchData()
+    updateProdutosList()
 
   }, [])
 
   return (
     <div>
-      
-      {produtos ? produtos.map(x=><OutlinedCard nome={x.nome} descricao={x.descricao}/>) : 'Loading...'}
+      {produtos ? produtos.map(x => <OutlinedCard updateProdutosList={updateProdutosList} key={x.id} nome={x.nome} descricao={x.descricao} id={x.id} />) : 'Loading...'}
     </div>
   )
 }
