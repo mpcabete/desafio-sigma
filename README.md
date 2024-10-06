@@ -16,16 +16,19 @@ docker compose up
 ```
 
 ## Inicialização para Desenvolvimento
+
 ### inicialize o banco de dados:
 
 ```bash
-docker compose db
+docker compose up db
 ```
 
 ### Inicialize o frontend no modo desenvolvimento:
 
 ```bash
 cd frontend
+echo 'REACT_APP_BACKEND_ENDPOINT="http://127.0.0.1:8000"' > .env
+npm install
 npm run start
 ```
 
@@ -33,6 +36,8 @@ npm run start
 
 ```bash
 cd backend
+python3 -m venv ./venv
 source ./venv/bin/activate
+pip3 install -r requirements.txt
 fastapi dev main.py
 ```
