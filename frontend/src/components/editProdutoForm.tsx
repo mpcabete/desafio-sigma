@@ -33,7 +33,7 @@ function EditProdutoForm({ rawProduto, updateProdutosList, handleCancel }: { raw
 
       }
 
-      const response = await fetch('http://127.0.0.1:8000/produtos/', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/produtos/`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

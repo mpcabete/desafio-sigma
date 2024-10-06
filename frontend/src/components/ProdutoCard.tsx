@@ -20,7 +20,7 @@ export default function OutlinedCard(
   async function handleDelete() {
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/produtos/?produtoID=${produto.id}`, { method: "delete" })
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/produtos/?produtoID=${produto.id}`, { method: "delete" })
       if (response.status !== 200) {
         throw (new Error("unable to delete produto"))
       }

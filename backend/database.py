@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 from os import getenv
 
-if(getenv("PRODUCTION")!=True):
+if(getenv("PRODUCTION")!="true"):
     load_dotenv("../.env",verbose=True)
 
 user = getenv("POSTGRES_USER")

@@ -1,3 +1,4 @@
+from os import getenv
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
@@ -10,8 +11,17 @@ models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000",
+    "http://localhost:3000"
 ]
+print(getenv("PRODUCTION"))
+if(getenv("PRODUCTION")=="true"):
+    endpoint = getenv("FRONTEND_ENDPOINT")
+    print(endpoint)
+    if endpoint != None:
+        origins = [
+                endpoint
+        ]
+
 
 app.add_middleware(
     CORSMiddleware,

@@ -7,7 +7,8 @@ function ProdutosList() {
 
   const [produtos, setProdutos] = useState<iProduto[] | null>(null);
   async function updateProdutosList() {
-    const response = await fetch("http://127.0.0.1:8000/produtos/")
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/produtos/`)
+    console.log(`${process.env.REACT_APP_BACKEND_ENDPOINT}/produtos/`)
     if (response.status === 200) {
       const data = await response.json()
       setProdutos(data)
