@@ -13,7 +13,7 @@ interface FormData {
 
 
 function EditProdutoForm({ rawProduto, updateProdutosList, handleCancel }: { rawProduto: iProduto, handleCancel: () => void, updateProdutosList: () => Promise<void> }) {
-  const produto = {nome:rawProduto.nome, descricao:rawProduto.descricao, id:rawProduto.id, valor:(rawProduto.valor/10).toString()} as FormData
+  const produto = {nome:rawProduto.nome, descricao:rawProduto.descricao, id:rawProduto.id, valor:(rawProduto.valor/100).toString()} as FormData
   const [formData, setFormData] = useState<FormData>(produto);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +29,7 @@ function EditProdutoForm({ rawProduto, updateProdutosList, handleCancel }: { raw
     try {
       const postData = {
         ...formData,
-        valor: Math.floor(Number(formData.valor) * 10) //Convert float value to int representing centavos
+        valor: Math.floor(Number(formData.valor) * 100) //Convert float value to int representing centavos
 
       }
 

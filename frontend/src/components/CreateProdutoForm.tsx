@@ -28,7 +28,7 @@ function ProdutoForm({ updateProdutosList }: { updateProdutosList: () => Promise
     try {
       const postData = {
         ...formData,
-        valor:Math.floor(Number(formData.valor)*10) //Convert float value to int representing centavos
+        valor:Math.floor(Number(formData.valor)*100) //Convert float value to int representing centavos
 
       }
 

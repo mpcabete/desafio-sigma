@@ -35,14 +35,16 @@ export default function OutlinedCard(
     return (
       <React.Fragment>
         <CardContent>
-          <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
+          <Typography gutterBottom sx={{ color: 'text.primary', fontSize: 20 }}>
             {produto.nome}
           </Typography>
-          <Typography variant="body2">
+          <Typography variant="body1" sx={{ color: 'text.secondary'}}>
             {produto.descricao}
           </Typography>
-          <Typography variant="body2">
-            {produto.valor / 10}
+          <br/>
+          <Typography variant="body2"sx={{ color: 'text.secondary'}}>
+            Valor: 
+            R$ {produto.valor / 100}
           </Typography>
         </CardContent>
         <CardActions>
