@@ -7,17 +7,6 @@ from .database import engine
 class Base(DeclarativeBase):
     pass
 
-# class User(Base):
-#     __tablename__ = "users"
-
-#     id = Column(Integer, primary_key=True)
-#     username = Column(String, unique=True, index=True)
-#     email = Column(String, unique=True, index=True)
-#     hashed_password = Column(String)
-
-#     items = relationship("Produto", back_populates="dono")
-
-
 class Produto(Base):
     __tablename__ = "produtos"
 
