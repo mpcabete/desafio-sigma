@@ -19,6 +19,9 @@ class Produto(ProdutoBase): #propriedades adicionais ao buscar produto
     #    orm_mode = True
 
 
+class ProdutoUpdate(Produto): 
+    pass
+
 
 # class UserBase(BaseModel):
 #     email: str

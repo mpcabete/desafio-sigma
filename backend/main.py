@@ -66,5 +66,5 @@ def delete_produto( produtoID: int, db: Session = Depends(get_db)):
     return crud.delete_produto(db=db, produtoID=produtoID )
 
 @app.put("/produtos/", response_model=schemas.Produto)
-def update_produto( produto: schemas.ProdutoCreate, db: Session = Depends(get_db)):
+def update_produto( produto: schemas.ProdutoUpdate, db: Session = Depends(get_db)):
     return crud.update_produto(db=db, produto=produto )

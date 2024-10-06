@@ -32,7 +32,7 @@ function EditProdutoForm({ produto, updateProdutosList, handleCancel }: { produt
       }
 
       const response = await fetch('http://127.0.0.1:8000/produtos/', {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
