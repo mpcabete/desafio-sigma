@@ -40,5 +40,6 @@ services:
     restart: unless-stopped
     ports:
       - 80:80
+    # mudar endpoint do backend no frontend/Dockerfile
     # environment:
     #   BACKEND_ENDPOINT: http://backend:3000
