@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { TextField, Button, Box, Typography } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
+import { iProduto } from '../interfaces';
 
 interface FormData {
   nome: string;
@@ -11,7 +12,8 @@ interface FormData {
 }
 
 
-function EditProdutoForm({ produto, updateProdutosList, handleCancel }: { produto: FormData, handleCancel: () => void, updateProdutosList: () => Promise<void> }) {
+function EditProdutoForm({ rawProduto, updateProdutosList, handleCancel }: { rawProduto: iProduto, handleCancel: () => void, updateProdutosList: () => Promise<void> }) {
+  const produto = {nome:rawProduto.nome, descricao:rawProduto.descricao, id:rawProduto.id, valor:(rawProduto.valor/10).toString()} as FormData
   const [formData, setFormData] = useState<FormData>(produto);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

@@ -25,7 +25,7 @@ from . import models, schemas
 
 
 def get_produtos(db: Session):
-    return db.query(models.Produto).all()
+    return db.query(models.Produto).order_by(models.Produto.id).all()
 
 
 def create_produto(db: Session, produto: schemas.ProdutoCreate):

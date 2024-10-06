@@ -4,6 +4,7 @@ from pydantic import BaseModel
 class ProdutoBase(BaseModel): #propriedades genéricas para produto
     nome: str
     descricao: str | None = None
+    valor: int
 
 
 class ProdutoCreate(ProdutoBase): #propriedades adicionais ao criar produto
